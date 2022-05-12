@@ -26,9 +26,10 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      <Expenses></Expenses>
+      <Expenses _expenses={expenses} />
     </div>
   );
 }
 
 export default App;
+//저기 <Expenses> 안에 props.expense가 있어야 하니 props를 속성값으로 넣어준다. {}안의 값이 위의 expenses[] 배열의 데이터
