@@ -1,6 +1,7 @@
-import Expenses from "./components/Expenses";
+import React from "react";
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -23,13 +24,19 @@ function App() {
     },
   ];
 
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   React.createElement(Expenses, { _expenses: expenses })
+  // );
   return (
     <div>
       <h2>Let's get started!</h2>
       <Expenses _expenses={expenses} />
     </div>
   );
-}
+};
 
 export default App;
 //저기 <Expenses> 안에 props.expense가 있어야 하니 props를 속성값으로 넣어준다. {}안의 값이 위의 expenses[] 배열의 데이터
