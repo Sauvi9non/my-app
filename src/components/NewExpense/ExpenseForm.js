@@ -4,6 +4,7 @@ import "./ExpenseForm.css";
 date, title. amount 세 개의 입력 필드가 필요하고 스타일링을 위해 모든 입력 필드에 div태그 추가
 */
 const ExpenseForm = (props) => {
+  //자식
   // document.getElementById('').addEventListener('click', (event)=> {})
 
   const [enteredTitle, setEnteredTitle] = useState("");
