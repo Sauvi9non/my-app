@@ -1,23 +1,22 @@
+import React, { useState } from "react";
 import "../Expenses/Expenses.css";
 import ExpenseItem from "../Expenses/ExpenseItem.js";
 import Card from "../UI/Card";
 import ExpenseForm from "../NewExpense/ExpenseForm";
-import ExpenseFilter from "./ExpenseFilter";
+import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
-  const setYearHandler = (selectedYear) => {
-    const filterYear = {
-      //이거로 state로 바뀐 값을 복사해서 가져오고
-      ...selectedYear,
-      //id: Math.random().toString(),
-    };
-    console.log("이곳은 Expenses " + filterYear);
+  const [filteredYear, setFilteredYear] = useState("2022");
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
   };
   return (
     <div>
-      <ExpenseFilter onSelectYear={setYearHandler} />
-
       <Card className="expenses">
+        <ExpensesFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
         <ExpenseItem
           title={props._expenses[0].title}
           amount={props._expenses[0].amount}
