@@ -1,35 +1,28 @@
 import React from "react";
-import "../Expenses/ExpensesFilter.css";
+import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
-  const dropboxChangeHandler = (event) => {
-    props.onChangeFilter(event.target.value);
+  const userChoose = (event) => {
+    //이벤트 핸들러 함수
+    //내가 하고 싶은거는 이벤트가 발생하면 상태를 Expenses에 저장하는것.
+    props.onFilterChanged(event.target.value); //이거로!!!값 보내기111
   };
-
   return (
-    <div className="expenses-filter">
-      <div className="expenses-filter__control">
-        <label className="expenses-filter label">Filter by year</label>
-        <select value={props.selected} onChange={dropboxChangeHandler}>
+    <div className="expenses-filter__control">
+      <div className="expenses-filter label">
+        <label>Filtered Year</label>
+      </div>
+      <div className="expenses-filter select">
+        <select value={props.selected} onChange={userChoose}>
+          //이벤트 발생
           <option value="2019">2019</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>
           <option value="2022">2022</option>
-          <option value="2023">2023</option>
         </select>
       </div>
-      <div>{}</div>
     </div>
   );
 };
+
 export default ExpensesFilter;
-
-/*
- 선택한 값을 expesnes로 그리고 그  ㄱ밧을state로 관리
- 자식에서 부모 컴포넌트 이벤트 접근방식을 사용해서 데이터를 보낼 수 있다
- 함수를 컴포넌트로 내려보내고 그 컴포넌트는 무슨일이 생길 때마다 그 함수를 호출한다
- 그래서 expense.js에서 아래로 전달하고 싶은 함수 정의.
- 부모 컴포넌트에서 함수 정의하고, 그 정의한 함수를 자식 컴포넌트로 보냄. 자식 컴포넌트에서 무슨 일 생길 때마다 함수 호출
- 
-
-*/

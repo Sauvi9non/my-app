@@ -10,9 +10,9 @@
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }*/
   .expenses-filter__control {
-    display: flex;
-    width: 100%;
-    align-items: center;
+    display: flex; /*렌더링 박스 유형을 결정하는 속성, 태그가 가진 고유 렌더링 박스 특징 변경가능!*/
+    width: 100%; /*float 요소를 normal flow에서 벗아나서 띄울 때 block요소는 위 아래, inline요소는 좌우*/
+    align-items: center; /*요즘은 flex나 grid로 레이아웃을 만든다*/
     justify-content: space-between;
     margin: 1rem 0;
   }

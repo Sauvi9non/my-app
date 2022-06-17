@@ -6,8 +6,8 @@ import "./NewExpense.css";
 const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
-      ...enteredExpenseData /*ExpenseForm에 submitHandler에 있는 객체*/,
       id: Math.random().toString(),
+      ...enteredExpenseData /*ExpenseForm에 submitHandler에 있는 객체*/,
     };
     props.onAddExpense(expenseData);
     /*props는 속성 가지고 오는거니까 props.속성이고
