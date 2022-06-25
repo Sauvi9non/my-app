@@ -9,12 +9,15 @@ function Expenses(props) {
   //여기에서의 props는 app.js의 속성인 _expenses
   const [selectedYear, setSelectedYear] = useState("2022");
 
-  const filterChanged = (props) => {
-    //props으로 받았다! event.target.value를
+  const filterChanged = (year) => {
+    //year으로 받았다! event.target.value를
     console.log("This is Expenses.");
     //selectedYear에 값을 저장해야하는데...
-    setSelectedYear(props);
+    setSelectedYear(year);
+    console.log(selectedYear);
+    props.onChooseYear(selectedYear);
   };
+
   return (
     <div>
       <Card className="expenses">

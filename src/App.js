@@ -41,6 +41,16 @@ expense, ...expenses를 씀으로서 expense라는 새 요소 추가하고, ...e
 기존 배열에 새로운 요소를 넣을 수 있다. */
   };
 
+  const chooseYearHandler = (selectedYear) => {
+    /* 원래 데이터 배열.filter(expense => expense.date.year == selectedYear) */
+    console.log("여기는 App.js입니다.");
+    console.log(selectedYear);
+    console.log(expenses[0].date.toString().slice(11,15));
+    const result = expenses.filter(expense => (expense.date.toString().slice(11,15) == selectedYear));
+    console.log(result);
+    setExpenses(result);
+  }
+
   // return React.createElement(
   //   "div",
   //   {},
@@ -50,7 +60,7 @@ expense, ...expenses를 씀으로서 expense라는 새 요소 추가하고, ...e
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses _expenses={expenses} />
+      <Expenses _expenses={expenses} onChooseYear={chooseYearHandler}/>
     </div>
   );
 };
