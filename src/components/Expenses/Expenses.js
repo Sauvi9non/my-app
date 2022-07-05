@@ -6,30 +6,25 @@ import ExpenseForm from "../NewExpense/ExpenseForm";
 import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
-  //여기에서의 props는 app.js의 속성인 _expenses
-  //const [selectedYear, setSelectedYear] = useState('');
+  const [filteredYear,setFilteredYear] = useState('2022');
 
-  const filterChanged = (_year) => {
-    //year으로 받았다! event.target.value를
-    console.log("This is Expenses.");
-    //selectedYear에 값을 저장해야하는데...
-    //console.log("This is selectedYear.");
-    //console.log(selectedYear); //State가 문제구만
-    console.log("This is _year.");
-    console.log(_year);
-    props.onChooseYear(_year);
-    
-    
+  const filterChanged = (selectedYear) => {
+   setFilteredYear(selectedYear);
+   console.log(filteredYear);
   };
+
+  const filteredExpenses = props._expenses.filter( (expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+    })
 
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter
-          /*selected={props._year}*/
+          selected={filteredYear}
           onFilterChanged={filterChanged}
         />
-        {props._expenses.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
@@ -37,10 +32,6 @@ function Expenses(props) {
             date={expense.date}
           />
         ))}
-
-        {/*/ 데이터 배열(_expense속성)의요소에 접근해서 모든 배열 요소에 대해
-        JSX요소 생성, //즉 밑에 ExpenseItem 태그 요소를 각 데이터에 대해
-  만들겠다 //map 메소드.*/}
       </Card>
     </div>
   );

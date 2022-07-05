@@ -27,26 +27,19 @@ const DUMMY_DATAS = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_DATAS);
-  const [filteredExpenses, setFilteredExpenses] = useState(DUMMY_DATAS);
+ // const [filteredExpenses, setFilteredExpenses] = useState(DUMMY_DATAS);
 
   const addExpenseHandler = (expense) => {
 
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
-
   };
-
-  const chooseYearHandler = (_year) => {
-    /* 원래 데이터 배열.filter(expense => expense.date.year == selectedYear) */
-    const result = expenses.filter( (expense) => expense.date.toString().slice(11,15) == _year);
-    setFilteredExpenses(result);
-  }
 
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses _expenses={filteredExpenses} onChooseYear={chooseYearHandler}/>
+      <Expenses _expenses={expenses}/>
     </div>
   );
 };
