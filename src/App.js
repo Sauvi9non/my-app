@@ -26,41 +26,27 @@ const DUMMY_DATAS = [
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_DATAS); //
+  const [expenses, setExpenses] = useState(DUMMY_DATAS);
+  const [filteredExpenses, setFilteredExpenses] = useState(DUMMY_DATAS);
 
   const addExpenseHandler = (expense) => {
-    /*여기의 expense를 expenses 배열에 추가하면 되는데 state를 사용한다.*/
-    /*setExpenses([expense, ...expenses]);*/
+
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
 
-    /* 업데이트를 어떻게 하냐
-  setExpenses를 이용해서 값에 새로운 배열을 넣을 수 있다.
-expense, ...expenses를 씀으로서 expense라는 새 요소 추가하고, ...expenses로 기존 배열 복사
-기존 배열에 새로운 요소를 넣을 수 있다. */
   };
 
-  const chooseYearHandler = (selectedYear) => {
+  const chooseYearHandler = (_year) => {
     /* 원래 데이터 배열.filter(expense => expense.date.year == selectedYear) */
-    console.log("여기는 App.js입니다.");
-    console.log(selectedYear);
-    console.log(expenses[0].date.toString().slice(11,15));
-    const result = expenses.filter(expense => (expense.date.toString().slice(11,15) == selectedYear));
-    console.log(result);
-    setExpenses(result);
+    const result = expenses.filter( (expense) => expense.date.toString().slice(11,15) == _year);
+    setFilteredExpenses(result);
   }
 
-  // return React.createElement(
-  //   "div",
-  //   {},
-  //   React.createElement("h2", {}, "Let's get started!"),
-  //   React.createElement(Expenses, { _expenses: expenses })
-  // );
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses _expenses={expenses} onChooseYear={chooseYearHandler}/>
+      <Expenses _expenses={filteredExpenses} onChooseYear={chooseYearHandler}/>
     </div>
   );
 };

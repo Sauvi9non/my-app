@@ -7,22 +7,26 @@ import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
   //여기에서의 props는 app.js의 속성인 _expenses
-  const [selectedYear, setSelectedYear] = useState("2022");
+  //const [selectedYear, setSelectedYear] = useState('');
 
-  const filterChanged = (year) => {
+  const filterChanged = (_year) => {
     //year으로 받았다! event.target.value를
     console.log("This is Expenses.");
     //selectedYear에 값을 저장해야하는데...
-    setSelectedYear(year);
-    console.log(selectedYear);
-    props.onChooseYear(selectedYear);
+    //console.log("This is selectedYear.");
+    //console.log(selectedYear); //State가 문제구만
+    console.log("This is _year.");
+    console.log(_year);
+    props.onChooseYear(_year);
+    
+    
   };
 
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter
-          selected={selectedYear}
+          /*selected={props._year}*/
           onFilterChanged={filterChanged}
         />
         {props._expenses.map((expense) => (
